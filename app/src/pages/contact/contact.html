@@ -1,17 +1,46 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      Contact
+      Configuración
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
+    <ion-list-header>Notificaciones</ion-list-header>
     <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
+      <ion-label>Notificarme por SMS</ion-label>
+      <ion-checkbox color="primary"  [checked]="configuracion.sms"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Notificarme por Push</ion-label>
+      <ion-checkbox color="primary"  [checked]="configuracion.push"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Notificarme por alarmas</ion-label>
+      <ion-checkbox color="primary"  [checked]="configuracion.alarm"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+    <ion-label>Notificarme a los</ion-label>
+    <ion-select [(ngModel)]="configuracion.tiempo">
+      <ion-option value="5">5 min</ion-option>
+      <ion-option value="10">10 min</ion-option>
+      <ion-option value="15">15 min</ion-option>
+      <ion-option value="30">30 min</ion-option>
+      <ion-option value="60">1 hora</ion-option>
+    </ion-select>
+  </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>Promociones</ion-list-header>
+    <ion-item>
+      <ion-label>Recibir novedades</ion-label>
+      <ion-checkbox color="primary"  [checked]="configuracion.novedad"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Recibir promociones</ion-label>
+      <ion-checkbox color="primary"  [checked]="configuracion.promocion"></ion-checkbox>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -14,3 +14,30 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.tabs-md .tab-button[aria-selected=true] {
+    background: #00796B;
+    color:  white;
+    padding: 0;
+}
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+    color: white;
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+}
+
+.tabs-ios .tab-button[aria-selected=true] {
+    background: #00796B;
+    color:  white;
+    padding: 0;
+}
+.tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+    color: white;
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+}
+
+.sms-general{
+  font-size: 20rem;
+  color: #cecece;
+}

@@ -1,3 +1,17 @@
 page-about {
-
+  p{
+    font-size: 1.5rem;
+    text-align: start;
+  }
+  .item-ios-light, .item-divider-ios-light {
+    color: #c5c5c5;
+    background-color: white;
+  }
+  .item-md-light, .item-divider-md-light {
+    color: #c5c5c5;
+    background-color: white;
+  }
+  .item-divider-md {
+    border-bottom: 0px solid #dedede;
+  }
 }

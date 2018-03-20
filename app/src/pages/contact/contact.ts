@@ -7,6 +7,15 @@ import { NavController } from 'ionic-angular';
 })
 export class ContactPage {
 
+  private configuracion: any = {
+      sms : false,
+      alarm : false,
+      push:false,
+      tiempo : 30,
+      novedad : false,
+      promocion : false
+    };
+
   constructor(public navCtrl: NavController) {
 
   }

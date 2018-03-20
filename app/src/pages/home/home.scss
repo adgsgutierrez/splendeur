@@ -1,3 +1,25 @@
 page-home {
+  .map-google{
+    width: 100%;
+    height: 100%;
+  }
 
+  ion-searchbar {
+    position: absolute;
+    width: 100%;
+    top: 4rem;
+    z-index: 2;
+  }
+
+  .searchbar-ios {
+    background: rgba(0, 0, 0, 0.36);
+  }
+
+  .searchbar-md {
+    background: rgba(0, 0, 0, 0.36);
+  }
+
+  .gmnoprint{
+    display: none;
+  }
 }

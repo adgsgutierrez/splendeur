@@ -1,10 +1,31 @@
-<!-- <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+<ion-header>
+  <ion-navbar  color="primary">
+    <ion-title>Selecciona peluquería</ion-title>
   </ion-navbar>
-</ion-header> -->
+</ion-header>
 
 <ion-content>
-  <ion-searchbar placeholder="Buscar establecimiento ..."></ion-searchbar>
-  <div class="map-google" #map id="map"></div>
+  <div [hidden]="!en_cola" padding style="align-content:  center;text-align: center;font-size: 1.4rem;">
+    <img src="assets/imgs/wait.gif"/>
+    <p>{{mensajes}}</p>
+    <ion-item >
+      <button (click)="cancelar()" ion-button block>Cancelar</button>
+    </ion-item>
+  </div>
+  <div [hidden]="en_cola">
+    <div class="sms-general" text-center [hidden]="turno != 'false'" padding>
+      <i class="fas fa-eye-slash"></i>
+      <p>No has seleccionado ningun servicio<br><br>1. Selecciona los servicios que deseas en la pantalla de inicio.<br>2. Escoge aquí tu peluquería.</p>
+    </div>
+    <div [hidden]="turno == 'false'">
+      <div [hidden]="!load" style="padding: 9rem;">
+        <!-- <ion-img [src]="imgload" style="width: 100%;height: 100%;"></ion-img> -->
+        <img src="assets/imgs/load.gif"/>
+      </div>
+      <div [hidden]="load">
+        <!-- <ion-searchbar placeholder="Buscar establecimiento ..."></ion-searchbar> -->
+        <div class="map-google" #map id="map" [style.width.px]="width" [style.height.px]="height" (click)="informacion()"></div>
+      </div>
+    </div>
+  </div>
 </ion-content>

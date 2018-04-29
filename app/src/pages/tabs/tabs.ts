@@ -10,10 +10,12 @@ import { PerfilPage } from '../perfil/perfil';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
-  tab4Root = PerfilPage;
+  private tab1Root = HomePage;
+  private tab2Root = AboutPage;
+  private tab3Root = ContactPage;
+  private tab4Root = PerfilPage;
+
+  private seleccionado : boolean = true;
 
   constructor() {
 

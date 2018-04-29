@@ -1,6 +1,6 @@
 <ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Inicio" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Mi Turno" tabIcon="paper"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Inicio" tabIcon="paper" [rootParams]="seleccionado"></ion-tab>
+  <ion-tab [root]="tab1Root" tabTitle="Peliquería" tabIcon="home" [rootParams]="seleccionado"></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Configuración" tabIcon="settings"></ion-tab>
   <ion-tab [root]="tab4Root" tabTitle="Perfil" tabIcon="person"></ion-tab>
 </ion-tabs>

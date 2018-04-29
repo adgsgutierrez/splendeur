@@ -7,11 +7,6 @@
 </ion-header>
 
 <ion-content padding >
-  <div class="sms-general" text-center *ngIf="!turno">
-    <i class="fas fa-eye-slash"></i>
-    <p>No se ha encontrado turno<br><br>1. Busca en el mapa una peluquería<br>2. Seleccionala y solicita el turno.</p>
-  </div>
-  <div *ngIf="turno">
     <ion-segment [(ngModel)]="genero">
       <ion-segment-button value="f">
         Mujeres
@@ -24,8 +19,7 @@
       <ion-item-divider color="light">Selecciona los servicios que requieras</ion-item-divider>
       <ion-item *ngFor="let servicio of servicios">
         <ion-label>{{servicio.nombre}}</ion-label>
-        <ion-checkbox color="primary" [checked]="servicio.value"></ion-checkbox>
+        <ion-checkbox color="primary" [(ngModel)]="servicio.value"></ion-checkbox>
       </ion-item>
     </ion-item-group>
-  </div>
 </ion-content>

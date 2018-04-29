@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController , NavParams} from 'ionic-angular';
 import { ConstantProvider } from '../../providers/constant/constant';
 
 @Component({
@@ -8,11 +8,10 @@ import { ConstantProvider } from '../../providers/constant/constant';
 })
 export class AboutPage {
 
-  private turno : boolean = false;
-  private servicios : Array<{id: number, nombre :string}> = [] ;
+  private servicios : Array<{id: number, nombre :string , value : boolean}> = [] ;
   private genero : string = 'f';
 
-  constructor(public navCtrl: NavController , private constant : ConstantProvider) {
+  constructor(public navCtrl: NavController , private constant : ConstantProvider ,private navParams: NavParams) {
     this.servicios = constant.getServicios().map((resp)=>{
       return {
         id : resp.id,
@@ -22,4 +21,24 @@ export class AboutPage {
     });
   }
 
+  public turnoVeficar(){
+    let exist : boolean = false;
+    this.servicios.forEach((data)=>{
+      //console.log("data",data);
+       if(data.value){
+        // console.log("Existe ", data);
+         exist = true;
+      }
+    });
+
+    if(exist){
+      localStorage.setItem('select','true');
+    }else{
+      localStorage.setItem('select','false');
+    }
+  }
+
+  ionViewWillLeave():void{
+    this.turnoVeficar();
+  }
 }

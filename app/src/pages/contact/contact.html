@@ -8,6 +8,13 @@
 
 <ion-content padding>
   <ion-list>
+    <ion-list-header>Buscar a {{distancia}} mts</ion-list-header>
+    <ion-item>
+      <ion-range min="100" max="1000" [(ngModel)]="distancia" color="secondary" (ionChange)="range()">
+        <ion-label range-left>50 mts</ion-label>
+        <ion-label range-right>1 km</ion-label>
+      </ion-range>
+    </ion-item>
     <ion-list-header>Notificaciones</ion-list-header>
     <ion-item>
       <ion-label>Notificarme por SMS</ion-label>
@@ -22,25 +29,18 @@
       <ion-checkbox color="primary"  [checked]="configuracion.alarm"></ion-checkbox>
     </ion-item>
     <ion-item>
-    <ion-label>Notificarme a los</ion-label>
-    <ion-select [(ngModel)]="configuracion.tiempo">
-      <ion-option value="5">5 min</ion-option>
-      <ion-option value="10">10 min</ion-option>
-      <ion-option value="15">15 min</ion-option>
-      <ion-option value="30">30 min</ion-option>
-      <ion-option value="60">1 hora</ion-option>
-    </ion-select>
-  </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-list-header>Promociones</ion-list-header>
-    <ion-item>
-      <ion-label>Recibir novedades</ion-label>
-      <ion-checkbox color="primary"  [checked]="configuracion.novedad"></ion-checkbox>
+      <ion-label>Notificarme a los</ion-label>
+      <ion-select [(ngModel)]="configuracion.tiempo">
+        <ion-option value="5">5 min</ion-option>
+        <ion-option value="10">10 min</ion-option>
+        <ion-option value="15">15 min</ion-option>
+        <ion-option value="30">30 min</ion-option>
+        <ion-option value="60">1 hora</ion-option>
+      </ion-select>
     </ion-item>
-    <ion-item>
-      <ion-label>Recibir promociones</ion-label>
-      <ion-checkbox color="primary"  [checked]="configuracion.promocion"></ion-checkbox>
+    <ion-item >
+      <button (click)="guardar()" ion-button block>Guardar</button>
     </ion-item>
   </ion-list>
+
 </ion-content>

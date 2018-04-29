@@ -38,6 +38,55 @@
 }
 
 .sms-general{
-  font-size: 20rem;
+  margin-top:10rem;
+  font-size: 10rem;
   color: #cecece;
+  p{
+    font-size: 2rem;
+    color: #cecece;
+  }
+}
+
+.tabs-md .tab-button {
+    min-height: 5.6rem;
+    font-weight: normal;
+    color: rgba(60, 60, 60, 0.7);
+    padding: 0;
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
+}
+.tabs-ios .tab-button {
+    min-height: 5.6rem;
+    font-weight: normal;
+    color: rgba(60, 60, 60, 0.7);
+    padding: 0;
+    border-top-left-radius: 26px;
+    border-top-right-radius: 26px;
+}
+
+.alert-md .alert-wrapper {
+    border-radius: 2px;
+    max-width: 300px !important;
+    background-color: #fafafa;
+    -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+    width: 300px !important;
+    height: 300px !important;
+}
+.alert-md .alert-button-group {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.alert-md .alert-message {
+     max-height: 180px;
+    font-size: 15px;
+    height: 180px;
+}
+
+.alert-md .alert-head {
+    text-align: left;
+    text-align: start;
+     padding: 0px;
 }

@@ -28,8 +28,12 @@ export class AboutPage {
     // Watch the device compass heading change
     this.subscription = this.screenOrientation.onChange().subscribe(
        () => {
-           console.log("Orientation Changed" , this.screenOrientation.type);
+        if(this.screenOrientation.type == 'portrait-primary'){
+           this.portrait = true;
+       }else{
+         this.portrait = false;
        }
+     }
     );
   }
 

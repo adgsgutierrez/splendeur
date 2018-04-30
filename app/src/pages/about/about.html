@@ -7,19 +7,45 @@
 </ion-header>
 
 <ion-content padding >
-    <ion-segment [(ngModel)]="genero">
-      <ion-segment-button value="f">
-        Mujeres
-      </ion-segment-button>
-      <ion-segment-button value="m">
-        Hombres
-      </ion-segment-button>
-    </ion-segment>
-    <ion-item-group>
-      <ion-item-divider color="light">Selecciona los servicios que requieras</ion-item-divider>
-      <ion-item *ngFor="let servicio of servicios">
-        <ion-label>{{servicio.nombre}}</ion-label>
-        <ion-checkbox color="primary" [(ngModel)]="servicio.value"></ion-checkbox>
-      </ion-item>
-    </ion-item-group>
+    <div *ngIf="portrait">
+      <ion-segment [(ngModel)]="genero">
+        <ion-segment-button value="f">
+          Mujeres
+        </ion-segment-button>
+        <ion-segment-button value="m">
+          Hombres
+        </ion-segment-button>
+      </ion-segment>
+      <ion-item-group>
+        <ion-item-divider color="light">Selecciona los servicios que requieras</ion-item-divider>
+        <ion-item *ngFor="let servicio of servicios">
+          <ion-label>{{servicio.nombre}}</ion-label>
+          <ion-checkbox color="primary" [(ngModel)]="servicio.value"></ion-checkbox>
+        </ion-item>
+      </ion-item-group>
+    </div>
+    <div *ngIf="!portrait">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item-group>
+              <ion-item-divider color="light">Para Mujeres</ion-item-divider>
+              <ion-item *ngFor="let servicio of servicios">
+                <ion-label>{{servicio.nombre}}</ion-label>
+                <ion-checkbox color="primary" [(ngModel)]="servicio.value"></ion-checkbox>
+              </ion-item>
+            </ion-item-group>
+          </ion-col>
+          <ion-col col-6>
+            <ion-item-group>
+              <ion-item-divider color="light">Para Hombres</ion-item-divider>
+              <ion-item *ngFor="let servicio of servicios">
+                <ion-label>{{servicio.nombre}}</ion-label>
+                <ion-checkbox color="primary" [(ngModel)]="servicio.value"></ion-checkbox>
+              </ion-item>
+            </ion-item-group>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
 </ion-content>

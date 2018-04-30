@@ -15,6 +15,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { ConstantProvider } from '../providers/constant/constant';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     SplashScreen,
     GoogleMaps,
     Geolocation,
+    ScreenOrientation,
     LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ConstantProvider

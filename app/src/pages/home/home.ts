@@ -156,6 +156,7 @@ export class HomePage {
 
   public espera():void{
     let iteraciones = 1
+    this.mensajes = "Estas en lista de espera...";
     this.time = setInterval(()=>{
       setTimeout(()=>{
         switch(iteraciones){

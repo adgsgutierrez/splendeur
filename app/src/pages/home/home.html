@@ -6,11 +6,20 @@
 
 <ion-content>
   <div [hidden]="!en_cola" padding style="align-content:  center;text-align: center;font-size: 1.4rem;">
-    <img src="assets/imgs/wait.gif"/>
-    <p>{{mensajes}}</p>
-    <ion-item >
-      <button (click)="cancelar()" ion-button block>Cancelar</button>
-    </ion-item>
+    <div  [hidden]="listo_llego">
+      <img src="assets/imgs/wait.gif"/>
+      <p>{{mensajes}}</p>
+      <ion-item >
+        <button (click)="cancelar()" ion-button block>Cancelar</button>
+      </ion-item>
+    </div>
+    <div  [hidden]="!listo_llego">
+      <img src="assets/imgs/final.jpg"/>
+      <p>Martina te espera</p>
+      <ion-item >
+        <button (click)="llegar()" ion-button block>Ya llegue!!</button>
+      </ion-item>
+    </div>
   </div>
   <div [hidden]="en_cola">
     <div class="sms-general" text-center [hidden]="turno != 'false'" padding>

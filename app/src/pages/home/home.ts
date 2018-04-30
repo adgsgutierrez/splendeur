@@ -1,7 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController , Platform , AlertController , ToastController} from 'ionic-angular';
+import { NavController , Platform , AlertController , ToastController , ActionSheetController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NoSanitizePipe } from '../../providers/pipe.security';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 declare var google;
 
@@ -21,10 +22,13 @@ export class HomePage {
   private width : number = 0;
   private height : number = 0;
   private load : boolean = false;
-  private en_cola : boolean = true;
+  private en_cola : boolean = false;
   private mensajes : string = "Estas en lista de espera...";
+  private time : any;
+  private listo_llego : boolean = false;
 
-  constructor(public navCtrl: NavController , private platform : Platform , private geolocation: Geolocation , private alertCtrl: AlertController , private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController , private platform : Platform , private geolocation: Geolocation , private alertCtrl: AlertController , private toastCtrl: ToastController ,
+    public actionSheetCtrl: ActionSheetController , private localNotifications: LocalNotifications) {
 
   }
 
@@ -152,7 +156,7 @@ export class HomePage {
 
   public espera():void{
     let iteraciones = 1
-    let time = setInterval(()=>{
+    this.time = setInterval(()=>{
       setTimeout(()=>{
         switch(iteraciones){
           case 1:
@@ -177,19 +181,54 @@ export class HomePage {
         iteraciones = iteraciones +1;
       },5000);
       if(iteraciones == 6){
-        clearInterval(time);
+        clearInterval(this.time);
+        this.lanzarNotificacion();
       }
     },6000);
   }
 
-  public cancelar():void{
-    let toast = this.toastCtrl.create({
-      message: 'Deseas cancelar tu solicitud',
-      duration: 3000,
-      position: 'bottom',
-      showCloseButton : true,
-      closeButtonText : 'Cerrar'
+  public lanzarNotificacion():void{
+    // Schedule a single notification
+    this.localNotifications.schedule({
+      id: 1,
+      text: 'Listo martina esta esperandote',
+      sound: 'file://assets/sound/alert.mp3',
+      vibrate: true,
+      led : 'blue',
+      priority : 2,
+
     });
-    toast.present();
+    this.listo_llego = true;
+
+  }
+
+  private llegar():void{
+    this.en_cola = false;
+    this.listo_llego = false;
+  }
+
+  public cancelar():void{
+    let actionSheet = this.actionSheetCtrl.create({
+      title: '¿Desea Cancelar el turno?',
+      buttons: [
+        {
+          text: 'Si',
+          role: 'yes',
+          handler: () => {
+            this.en_cola = false;
+            clearInterval(this.time);
+          }
+        },
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
   }
 }

@@ -28,6 +28,7 @@ export class HomePage {
   private listo_llego : boolean = false;
   private portrait : boolean = true;
   private subscription : any;
+  private viewLateral : boolean = false;
 
   constructor(public navCtrl: NavController , private platform : Platform , private geolocation: Geolocation , private alertCtrl: AlertController , private toastCtrl: ToastController ,
     public actionSheetCtrl: ActionSheetController , private localNotifications: LocalNotifications , private screenOrientation: ScreenOrientation) {
@@ -47,6 +48,7 @@ export class HomePage {
            this.portrait = true;
            this.loadInfo();
          }else{
+           this.viewLateral = false;
            this.portrait = false;
            this.loadInfo();
          }
@@ -174,7 +176,7 @@ export class HomePage {
       {
         text: 'SI',
         handler: () => {
-          this.en_cola = true;
+
           this.espera();
         }
       }
@@ -184,6 +186,7 @@ export class HomePage {
   }
 
   public espera():void{
+    this.en_cola = true;
     let iteraciones = 1
     this.mensajes = "Estas en lista de espera...";
     this.time = setInterval(()=>{
@@ -263,7 +266,7 @@ export class HomePage {
   }
 
   private informacionV2():void{
-
+    this.viewLateral = true;
   }
 
   ionViewWillLeave():void{

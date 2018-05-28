@@ -16,9 +16,9 @@
           Hombres
         </ion-segment-button>
       </ion-segment>
-      <ion-item-group padding class="slide-in-both-ways">
+      <ion-item-group padding >
         <ion-item-divider color="light">Selecciona los servicios que requieras</ion-item-divider>
-        <ion-item *ngFor="let servicio of servicios">
+        <ion-item class="slide-in-both-ways" *ngFor="let servicio of servicios">
           <ion-label>{{servicio.nombre}}</ion-label>
           <ion-checkbox color="primary" [(ngModel)]="servicio.value"></ion-checkbox>
         </ion-item>
@@ -28,18 +28,18 @@
       <ion-grid>
         <ion-row>
           <ion-col col-6>
-            <ion-item-group padding class="slide-in-both-ways">
+            <ion-item-group padding >
               <ion-item-divider color="light">Para Mujeres</ion-item-divider>
-              <ion-item *ngFor="let servicio of servicios">
+              <ion-item class="slide-in-both-ways" *ngFor="let servicio of servicios">
                 <ion-label>{{servicio.nombre}}</ion-label>
                 <ion-checkbox color="primary" [(ngModel)]="servicio.value"></ion-checkbox>
               </ion-item>
             </ion-item-group>
           </ion-col>
           <ion-col col-6>
-            <ion-item-group padding class="slide-in-both-ways">
+            <ion-item-group padding >
               <ion-item-divider color="light">Para Hombres</ion-item-divider>
-              <ion-item *ngFor="let servicio of servicios1">
+              <ion-item class="slide-in-both-ways" *ngFor="let servicio of servicios1">
                 <ion-label>{{servicio.nombre}}</ion-label>
                 <ion-checkbox color="primary" [(ngModel)]="servicio.value"></ion-checkbox>
               </ion-item>

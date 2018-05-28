@@ -7,42 +7,89 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <img [src]="usuario.photo" (click)="changeFoto()"/>
-    <ion-card-content>
-      <ion-card-title>
-        {{usuario.nombre}} {{usuario.apellido}}
-      </ion-card-title>
-    </ion-card-content>
-    <ion-item>
-      <ion-label floating>Nombre</ion-label>
-      <ion-input type="text" [(ngModel)]="usuario.nombre"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Apellido</ion-label>
-      <ion-input type="text" [(ngModel)]="usuario.apellido"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Teléfono</ion-label>
-      <ion-input type="text" [(ngModel)]="usuario.telefono"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Dirección</ion-label>
-      <ion-input type="text" [(ngModel)]="usuario.direccion"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Correo</ion-label>
-      <ion-input type="text" [(ngModel)]="usuario.correo"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label floating>Sexo</ion-label>
-      <ion-select [(ngModel)]="usuario.sexo">
-        <ion-option value="m">Hombre</ion-option>
-        <ion-option value="f">Mujer</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item >
-      <button (click)="guardar()" ion-button block>Guardar</button>
-    </ion-item>
-  </ion-card>
+
+    <ion-card  *ngIf="portrait">
+      <img [src]="usuario.photo" (click)="changeFoto()"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{usuario.nombre}} {{usuario.apellido}}
+        </ion-card-title>
+      </ion-card-content>
+      <ion-item>
+        <ion-label floating>Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Apellido</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.apellido"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Teléfono</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.telefono"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Dirección</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.direccion"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Correo</ion-label>
+        <ion-input type="text" [(ngModel)]="usuario.correo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Sexo</ion-label>
+        <ion-select [(ngModel)]="usuario.sexo">
+          <ion-option value="m">Hombre</ion-option>
+          <ion-option value="f">Mujer</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item >
+        <button (click)="guardar()" ion-button block>Guardar</button>
+      </ion-item>
+    </ion-card>
+    <ion-grid *ngIf="!portrait">
+      <ion-row>
+        <ion-col col-4>
+          <img [src]="usuario.photo" (click)="changeFoto()"/>
+        </ion-col>
+        <ion-col col-8>
+          <ion-card>
+            <ion-card-content>
+              <ion-card-title>
+                {{usuario.nombre}} {{usuario.apellido}}
+              </ion-card-title>
+            </ion-card-content>
+            <ion-item>
+              <ion-label floating>Nombre</ion-label>
+              <ion-input type="text" [(ngModel)]="usuario.nombre"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Apellido</ion-label>
+              <ion-input type="text" [(ngModel)]="usuario.apellido"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Teléfono</ion-label>
+              <ion-input type="text" [(ngModel)]="usuario.telefono"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Dirección</ion-label>
+              <ion-input type="text" [(ngModel)]="usuario.direccion"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Correo</ion-label>
+              <ion-input type="text" [(ngModel)]="usuario.correo"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Sexo</ion-label>
+              <ion-select [(ngModel)]="usuario.sexo">
+                <ion-option value="m">Hombre</ion-option>
+                <ion-option value="f">Mujer</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item >
+              <button (click)="guardar()" ion-button block>Guardar</button>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+   </ion-grid>
 </ion-content>

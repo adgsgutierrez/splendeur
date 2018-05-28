@@ -45,7 +45,7 @@
           <p>No has seleccionado ningun servicio<br><br>1. Selecciona los servicios que deseas en la pantalla de inicio.<br>2. Escoge aquí tu peluquería.</p>
         </div>
         <div [hidden]="turno == 'false'">
-          <div [hidden]="!load" style="padding: 3rem;padding-left:6rem;">
+          <div [hidden]="!load" style="padding: 3rem;padding-left:20rem;">
             <!-- <ion-img [src]="imgload" style="width: 100%;height: 100%;"></ion-img> -->
             <img src="assets/imgs/load.gif"/>
           </div>
@@ -53,29 +53,32 @@
             <!-- <ion-searchbar placeholder="Buscar establecimiento ..."></ion-searchbar> -->
             <ion-grid>
               <ion-row>
-                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4>
-                <ion-card>
-                  <img src="assets/imgs/site.jpg"/>
+                <ion-col col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 >
+                <ion-card >
+                  <img *ngIf="viewLateral" src="assets/imgs/site.jpg"/>
                     <ion-card-content>
-                      <p>
+                      <p *ngIf="viewLateral">
                         <b>Donde Martina</b><br>Cra 22 No 32 - 45<br>Estas a 3 turnos de ser atentida<br>¿Deseas tomar turno?
                       </p>
+                      <p *ngIf="!viewLateral">
+                        <b>Selecciona una peluquería</b>
+                      </p>
                     </ion-card-content>
-                    <ion-row>
+                    <ion-row *ngIf="viewLateral">
                       <ion-col>
                         <button ion-button icon-left clear small>
                           <div>No</div>
                         </button>
                       </ion-col>
                       <ion-col>
-                        <button ion-button icon-left clear small>
+                        <button ion-button icon-left clear small (click)="espera()">
                           <div>Si</div>
                         </button>
                       </ion-col>
                     </ion-row>
                   </ion-card>
                 </ion-col>
-                <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8>
+                <ion-col col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 >
                   <div class="map-google" #map id="map" [style.width.px]="width" [style.height.px]="height" (click)="informacionV2()"></div>
                 </ion-col>
               </ion-row>

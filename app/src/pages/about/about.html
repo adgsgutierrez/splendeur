@@ -6,7 +6,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding >
+<ion-content >
     <div *ngIf="portrait">
       <ion-segment [(ngModel)]="genero">
         <ion-segment-button value="f">
@@ -16,7 +16,7 @@
           Hombres
         </ion-segment-button>
       </ion-segment>
-      <ion-item-group>
+      <ion-item-group padding class="slide-in-both-ways">
         <ion-item-divider color="light">Selecciona los servicios que requieras</ion-item-divider>
         <ion-item *ngFor="let servicio of servicios">
           <ion-label>{{servicio.nombre}}</ion-label>
@@ -28,7 +28,7 @@
       <ion-grid>
         <ion-row>
           <ion-col col-6>
-            <ion-item-group>
+            <ion-item-group padding class="slide-in-both-ways">
               <ion-item-divider color="light">Para Mujeres</ion-item-divider>
               <ion-item *ngFor="let servicio of servicios">
                 <ion-label>{{servicio.nombre}}</ion-label>
@@ -37,9 +37,9 @@
             </ion-item-group>
           </ion-col>
           <ion-col col-6>
-            <ion-item-group>
+            <ion-item-group padding class="slide-in-both-ways">
               <ion-item-divider color="light">Para Hombres</ion-item-divider>
-              <ion-item *ngFor="let servicio of servicios">
+              <ion-item *ngFor="let servicio of servicios1">
                 <ion-label>{{servicio.nombre}}</ion-label>
                 <ion-checkbox color="primary" [(ngModel)]="servicio.value"></ion-checkbox>
               </ion-item>

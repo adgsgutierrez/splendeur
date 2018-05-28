@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController , Platform , AlertController , ToastController , ActionSheetController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
-import { NoSanitizePipe } from '../../providers/pipe.security';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 declare var google;
 
@@ -26,13 +26,37 @@ export class HomePage {
   private mensajes : string = "Estas en lista de espera...";
   private time : any;
   private listo_llego : boolean = false;
+  private portrait : boolean = true;
+  private subscription : any;
 
   constructor(public navCtrl: NavController , private platform : Platform , private geolocation: Geolocation , private alertCtrl: AlertController , private toastCtrl: ToastController ,
-    public actionSheetCtrl: ActionSheetController , private localNotifications: LocalNotifications) {
+    public actionSheetCtrl: ActionSheetController , private localNotifications: LocalNotifications , private screenOrientation: ScreenOrientation) {
 
   }
 
   ionViewWillEnter() {
+    // Watch the device compass heading change
+    if(this.screenOrientation.type == 'portrait-primary'){
+      this.portrait = true;
+    }else{
+      this.portrait = false;
+    }
+    this.subscription = this.screenOrientation.onChange().subscribe(
+       () => {
+         if(this.screenOrientation.type == 'portrait-primary'){
+           this.portrait = true;
+           this.loadInfo();
+         }else{
+           this.portrait = false;
+           this.loadInfo();
+         }
+           console.log("Orientation Changed" , this.screenOrientation.type);
+       }
+    );
+    this.loadInfo();
+  }
+
+  private loadInfo(){
     if(!this.en_cola){
       this.turno =  localStorage.getItem('select') || 'false';
       console.log("Turno" , this.turno);
@@ -73,8 +97,13 @@ export class HomePage {
 
   private loadMap() {
     let radio = parseInt(localStorage.getItem("mts") || '100') ;
-    this.width = this.platform.width();
-    this.height = this.platform.height();
+    if(this.portrait){
+      this.width = this.platform.width();
+      this.height = this.platform.height();
+    }else{
+      this.width = this.platform.width() - (this.platform.width() * 0.4);
+      this.height = this.platform.height();
+    }
     this.map = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
 
     this.adicionarMarcador(Math.floor((Math.random() * 6) + 1));
@@ -231,5 +260,13 @@ export class HomePage {
     });
 
     actionSheet.present();
+  }
+
+  private informacionV2():void{
+
+  }
+
+  ionViewWillLeave():void{
+    this.subscription.unsubscribe();
   }
 }

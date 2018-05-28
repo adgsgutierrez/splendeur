@@ -8,7 +8,7 @@
 
 <ion-content>
   <ion-card>
-    <img src="assets/imgs/profile.jpg"/>
+    <img [src]="usuario.photo" (click)="changeFoto()"/>
     <ion-card-content>
       <ion-card-title>
         {{usuario.nombre}} {{usuario.apellido}}

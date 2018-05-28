@@ -23,4 +23,16 @@ page-home {
     display: none;
   }
 
+  .gray-img{
+    -webkit-filter: grayscale(100%) !important; /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%) !important;
+  }
+
+  .card-md {
+    margin: 0px;
+    width: calc(100% );
+  }
+  [col-4] {
+    padding: 5px;
+  }
 }

@@ -3,6 +3,7 @@ import { NavController , NavParams} from 'ionic-angular';
 import { ConstantProvider } from '../../providers/constant/constant';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
+
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
@@ -10,6 +11,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 export class AboutPage {
 
   private servicios : Array<{id: number, nombre :string , value : boolean}> = [] ;
+  private servicios1 : Array<{id: number, nombre :string , value : boolean}> = [] ;
   private genero : string = 'f';
   private portrait : boolean = true;
   private subscription : any;
@@ -22,12 +24,29 @@ export class AboutPage {
         value : false
       };
     });
+    this.servicios1 = constant.getServicios().map((resp)=>{
+      return {
+        id : resp.id,
+        nombre : resp.nombre,
+        value : false
+      };
+    });
   }
 
   ionViewDidEnter(){
     // Watch the device compass heading change
+    if(this.screenOrientation.type == 'portrait-primary'){
+      this.portrait = true;
+    }else{
+      this.portrait = false;
+    }
     this.subscription = this.screenOrientation.onChange().subscribe(
        () => {
+         if(this.screenOrientation.type == 'portrait-primary'){
+           this.portrait = true;
+         }else{
+           this.portrait = false;
+         }
            console.log("Orientation Changed" , this.screenOrientation.type);
        }
     );

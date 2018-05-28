@@ -16,6 +16,7 @@ import { ConstantProvider } from '../providers/constant/constant';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { Camera } from '@ionic-native/camera';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     Geolocation,
     ScreenOrientation,
     LocalNotifications,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ConstantProvider
   ]

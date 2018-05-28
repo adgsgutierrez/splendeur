@@ -87,8 +87,5 @@
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
     <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
     <engine name="android" spec="7.0.0" />
-<<<<<<< HEAD
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
-=======
->>>>>>> 15e58c0864ad4efb15c7a856b09a3ec6f465b554
 </widget>

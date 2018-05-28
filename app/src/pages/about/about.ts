@@ -42,21 +42,14 @@ export class AboutPage {
     }
     this.subscription = this.screenOrientation.onChange().subscribe(
        () => {
-<<<<<<< HEAD
          if(this.screenOrientation.type == 'portrait-primary'){
            this.portrait = true;
          }else{
            this.portrait = false;
          }
            console.log("Orientation Changed" , this.screenOrientation.type);
-=======
-        if(this.screenOrientation.type == 'portrait-primary'){
-           this.portrait = true;
-       }else{
-         this.portrait = false;
->>>>>>> 15e58c0864ad4efb15c7a856b09a3ec6f465b554
        }
-     }
+
     );
   }
 
